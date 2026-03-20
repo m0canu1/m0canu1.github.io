@@ -160,6 +160,14 @@ function setupMobileMenu() {
     });
   });
 
+  // Close menu on scroll
+  window.addEventListener('scroll', () => {
+    if (navMenu.classList.contains('active')) {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    }
+  }, { passive: true });
+
   // Close menu on outside click
   document.addEventListener('click', (e) => {
     if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
