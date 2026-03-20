@@ -149,6 +149,9 @@ nav {
   display: inline-block;
   border-top: 2px solid var(--orange);
   padding-top: 8px;
+  white-space: nowrap;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .hero-subtitle {
