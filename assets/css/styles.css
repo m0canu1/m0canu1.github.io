@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 :root {
@@ -27,6 +28,41 @@
   --spacing-lg: 24px;
   --spacing-xl: 32px;
   --spacing-2xl: 40px;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --black: #ffffff;
+  --dark: #f5f5f5;
+  --card: #efefef;
+  --border: #e0e0e0;
+  --text: #1a1a1a;
+  --muted: #666666;
+  --text-tertiary: #999999;
+}
+
+[data-theme="light"] .hero {
+  background: linear-gradient(rgba(245, 245, 245, 0.6), rgba(245, 245, 245, 0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&h=1600&fit=crop') center/cover;
+}
+
+[data-theme="light"] .logo-nav {
+  filter: invert(1);
+}
+
+[data-theme="light"] .theme-toggle i {
+  color: #f39c12;
+}
+
+[data-theme="light"] a {
+  color: inherit;
+}
+
+[data-theme="light"] .status-dot.status-open {
+  background: #27ae60;
+}
+
+[data-theme="light"] .highlight {
+  color: var(--red);
 }
 
 html {
@@ -139,6 +175,39 @@ nav::after {
 
 .nav-links .contact-btn:hover {
   background: var(--red-dark);
+}
+
+/* Nav Actions & Theme Toggle */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 18px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  border-radius: 8px;
+}
+
+.theme-toggle:hover {
+  color: var(--red);
+  background: rgba(224, 32, 48, 0.1);
+  transform: rotate(20deg);
+}
+
+@media (max-width: 900px) {
+  .nav-actions {
+    gap: 8px;
+  }
 }
 
 /* Hamburger Menu */

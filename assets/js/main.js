@@ -1,3 +1,46 @@
+// ━━━━━━━━━━ THEME TOGGLE ━━━━━━━━━━
+function initThemeToggle() {
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  // Load saved theme or use system preference
+  const savedTheme = localStorage.getItem('theme') || (prefersDark.matches ? 'dark' : 'light');
+  html.setAttribute('data-theme', savedTheme);
+  updateThemeIcon(savedTheme);
+
+  // Toggle theme on button click
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+  });
+
+  // Listen to system preference changes
+  prefersDark.addEventListener('change', (e) => {
+    const newTheme = e.matches ? 'dark' : 'light';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+  });
+}
+
+function updateThemeIcon(theme) {
+  const themeToggle = document.getElementById('themeToggle');
+  const icon = themeToggle.querySelector('i');
+
+  if (theme === 'dark') {
+    icon.className = 'fas fa-moon';
+    themeToggle.title = 'Tema chiaro';
+  } else {
+    icon.className = 'fas fa-sun';
+    themeToggle.title = 'Tema scuro';
+  }
+}
+
 // ━━━━━━━━━━ SCROLL PROGRESS INDICATOR ━━━━━━━━━━
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
@@ -187,6 +230,9 @@ function setupMobileMenu() {
 
 // ━━━━━━━━━━ EVENT LISTENERS ━━━━━━━━━━
 document.addEventListener('DOMContentLoaded', function() {
+  // Theme toggle
+  initThemeToggle();
+
   // Mobile menu
   setupMobileMenu();
   // Founder cards
