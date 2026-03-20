@@ -1355,6 +1355,22 @@ footer {
   margin-bottom: 20px;
 }
 
+.footer-logo-dark {
+  display: block;
+}
+
+.footer-logo-light {
+  display: none;
+}
+
+[data-theme="light"] .footer-logo-dark {
+  display: none;
+}
+
+[data-theme="light"] .footer-logo-light {
+  display: block;
+}
+
 .footer-nav {
   list-style: none;
 }
