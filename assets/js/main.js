@@ -132,6 +132,9 @@ const modal = {
     document.body.classList.add('modal-open');
     this.lastFocusedElement = document.activeElement;
     this.setupFocusTrap();
+    // Sposta il focus al primo elemento interattivo del drawer
+    const firstFocusable = this.drawer.querySelector('a, button, [tabindex]');
+    if (firstFocusable) firstFocusable.focus();
   },
 
   closeModal() {
@@ -189,41 +192,44 @@ function setupMobileMenu() {
 
   if (!menuToggle || !navMenu) return;
 
+  function closeMenu() {
+    menuToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    navMenu.setAttribute('aria-hidden', 'true');
+  }
+
   // Toggle menu
   menuToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.contains('active');
     menuToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+    navMenu.setAttribute('aria-hidden', String(isOpen));
   });
 
   // Close menu on link click
   navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('active');
-      navMenu.classList.remove('active');
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   // Close menu on scroll
   window.addEventListener('scroll', () => {
-    if (navMenu.classList.contains('active')) {
-      menuToggle.classList.remove('active');
-      navMenu.classList.remove('active');
-    }
+    if (navMenu.classList.contains('active')) closeMenu();
   }, { passive: true });
 
   // Close menu on outside click
   document.addEventListener('click', (e) => {
     if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-      menuToggle.classList.remove('active');
-      navMenu.classList.remove('active');
+      closeMenu();
     }
   });
 
   // Close menu on escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-      menuToggle.classList.remove('active');
-      navMenu.classList.remove('active');
+      closeMenu();
+      menuToggle.focus();
     }
   });
 }
@@ -358,7 +364,16 @@ document.addEventListener('DOMContentLoaded', function() {
           formGroups.forEach(group => {
             group.classList.remove('error', 'success');
           });
-          alert(`Grazie ${name}! Ti contatteremo presto.`);
+
+          // Mostra il banner di successo invece di alert()
+          const banner = document.getElementById('formSuccessBanner');
+          const bannerText = document.getElementById('formSuccessText');
+          if (banner && bannerText) {
+            bannerText.textContent = `Grazie ${name}! Ti contatteremo presto.`;
+            banner.classList.add('visible');
+            banner.focus();
+            setTimeout(() => banner.classList.remove('visible'), 6000);
+          }
         }, 2000);
       }, 1500);
     }

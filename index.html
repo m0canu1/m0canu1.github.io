@@ -19,8 +19,11 @@
 
 <body>
 
+  <!-- Skip link - accessibilità keyboard -->
+  <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
+
   <!-- NAV -->
-  <nav>
+  <nav aria-label="Navigazione principale">
     <img src="assets/images/logos/PNG/PhysicALL_LOGO_Bianco.png" alt="PhysicAll" class="logo-nav">
     <ul class="nav-links">
       <li><a href="#chisiamo">Chi Siamo</a></li>
@@ -31,9 +34,9 @@
     </ul>
     <div class="nav-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Cambia tema" title="Tema scuro/chiaro">
-        <i class="fas fa-moon"></i>
+        <i class="fas fa-moon" aria-hidden="true"></i>
       </button>
-      <button class="nav-menu-toggle" aria-label="Apri menu" id="menuToggle">
+      <button class="nav-menu-toggle" aria-label="Apri menu" aria-expanded="false" id="menuToggle">
         <span></span>
         <span></span>
         <span></span>
@@ -42,7 +45,7 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div class="nav-menu" id="navMenu">
+  <div class="nav-menu" id="navMenu" role="navigation" aria-label="Menu mobile" aria-hidden="true">
     <a href="#chisiamo">Chi Siamo</a>
     <a href="#founders">Fondatori</a>
     <a href="#info">Orari</a>
@@ -51,7 +54,7 @@
   </div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="main-content">
     <div class="hero-content">
       <div class="hero-label">Premium Personal Training</div>
       <h1>Il Tuo Corpo<br><span class="highlight">Merita Eccellenza</span></h1>
@@ -90,22 +93,22 @@
         <div>
           <div class="pillar-grid">
             <div class="pillar-card">
-              <i class="fas fa-dumbbell pillar-icon"></i>
+              <i class="fas fa-dumbbell pillar-icon" aria-hidden="true"></i>
               <h3>Allenamento</h3>
               <p>Programmi personalizzati e attrezzature all'avanguardia</p>
             </div>
             <div class="pillar-card">
-              <i class="fas fa-apple-whole pillar-icon"></i>
+              <i class="fas fa-apple-whole pillar-icon" aria-hidden="true"></i>
               <h3>Nutrizione</h3>
               <p>Consulenza nutrizionale da specialisti certificati</p>
             </div>
             <div class="pillar-card">
-              <i class="fas fa-heart-pulse pillar-icon"></i>
+              <i class="fas fa-heart-pulse pillar-icon" aria-hidden="true"></i>
               <h3>Benessere</h3>
               <p>Percorso completo verso il tuo benessere</p>
             </div>
             <div class="pillar-card">
-              <i class="fas fa-user-group pillar-icon"></i>
+              <i class="fas fa-user-group pillar-icon" aria-hidden="true"></i>
               <h3>Community</h3>
               <p>Una famiglia di persone con i tuoi stessi obiettivi</p>
             </div>
@@ -290,24 +293,24 @@
             </li>
           </ul>
           <div class="social-buttons">
-            <a href="https://instagram.com/physic.all" class="social-btn" title="Instagram" target="_blank">
-              <i class="fab fa-instagram"></i>
+            <a href="https://instagram.com/physic.all" class="social-btn" aria-label="Instagram" target="_blank">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
             </a>
-            <a href="https://facebook.com" class="social-btn" title="Facebook" target="_blank">
-              <i class="fab fa-facebook-f"></i>
+            <a href="https://facebook.com" class="social-btn" aria-label="Facebook" target="_blank">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i>
             </a>
-            <a href="https://youtube.com" class="social-btn" title="YouTube" target="_blank">
-              <i class="fab fa-youtube"></i>
+            <a href="https://youtube.com" class="social-btn" aria-label="YouTube" target="_blank">
+              <i class="fab fa-youtube" aria-hidden="true"></i>
             </a>
-            <a href="https://tiktok.com" class="social-btn" title="TikTok" target="_blank">
-              <i class="fab fa-tiktok"></i>
+            <a href="https://tiktok.com" class="social-btn" aria-label="TikTok" target="_blank">
+              <i class="fab fa-tiktok" aria-hidden="true"></i>
             </a>
           </div>
         </div>
 
         <div>
           <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 30px;">Inviaci un Messaggio</h3>
-          <form class="contact-form" id="contactForm">
+          <form class="contact-form" id="contactForm" aria-label="Modulo di contatto" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Nome</label>
@@ -348,6 +351,10 @@
               <span class="form-success-checkmark">✓</span>
             </div>
             <button type="submit" class="btn btn-primary">Invia Messaggio</button>
+            <div class="form-success-banner" id="formSuccessBanner" role="alert" aria-live="polite">
+              <i class="fas fa-check-circle" aria-hidden="true"></i>
+              <span id="formSuccessText">Grazie! Ti contatteremo presto.</span>
+            </div>
           </form>
         </div>
       </div>
@@ -383,15 +390,15 @@
         </div>
       </div>
       <div class="footer-copyright">
-        © 2025 PhysicAll. Tutti i diritti riservati.
+        © 2026 PhysicAll. Tutti i diritti riservati.
       </div>
     </div>
   </footer>
 
   <!-- WHATSAPP FLOATING BUTTON -->
   <a href="https://wa.me/393896051683" class="whatsapp-btn" target="_blank" aria-label="Contattaci su WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <div class="whatsapp-tooltip">💬 Scrivici su WhatsApp</div>
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <div class="whatsapp-tooltip" role="tooltip">Scrivici su WhatsApp</div>
   </a>
 
   <!-- MODAL DRAWER -->
@@ -423,11 +430,11 @@
     </div>
 
     <div class="drawer-footer">
-      <a href="https://wa.me/393896051683" class="drawer-footer-btn whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i> WhatsApp
+      <a href="https://wa.me/393896051683" class="drawer-footer-btn whatsapp" target="_blank" aria-label="Contatta su WhatsApp">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
       </a>
-      <a href="mailto:physicallpt@gmail.com" class="drawer-footer-btn email">
-        <i class="fas fa-envelope"></i> Email
+      <a href="mailto:physicallpt@gmail.com" class="drawer-footer-btn email" aria-label="Invia email">
+        <i class="fas fa-envelope" aria-hidden="true"></i> Email
       </a>
     </div>
   </div>
