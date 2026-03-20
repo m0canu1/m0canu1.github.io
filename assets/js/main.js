@@ -395,7 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const giacomoCard = document.querySelector('.founder-card.giacomo');
   const lorenzoCard = document.querySelector('.founder-card.lorenzo');
 
-  if (lucaCard) lucaCard.style.background = 'linear-gradient(135deg, #2d1a1a, #4a2020)';
+  if (lucaCard) lucaCard.style.background = 'linear-gradient(135deg, #0d1f4a, #1a3a7a)';
   if (giacomoCard) giacomoCard.style.background = 'linear-gradient(135deg, #0a1a3a, #1a2a5a)';
-  if (lorenzoCard) lorenzoCard.style.background = 'linear-gradient(135deg, #3a1a1a, #5a2020)';
+  if (lorenzoCard) lorenzoCard.style.background = 'linear-gradient(135deg, #0d3a1f, #1a5a38)';
 });
