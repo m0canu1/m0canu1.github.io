@@ -159,13 +159,107 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Contact form
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
+  // Contact form validation and submission
+  const contactForm = document.getElementById('contactForm');
+  const formGroups = contactForm.querySelectorAll('.form-group');
+
+  // Validate email format
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  // Validate individual field
+  function validateField(field) {
+    const formGroup = field.closest('.form-group');
+    const value = field.value.trim();
+    let isValid = true;
+    let errorMessage = '';
+
+    if (!value) {
+      isValid = false;
+      if (field.type === 'email') {
+        errorMessage = "L'email è obbligatoria";
+      } else if (field.name === 'service') {
+        errorMessage = 'Seleziona un servizio';
+      } else if (field.tagName === 'TEXTAREA') {
+        errorMessage = 'Il messaggio è obbligatorio';
+      } else {
+        errorMessage = `${field.previousElementSibling.textContent} è obbligatorio`;
+      }
+    } else if (field.type === 'email' && !validateEmail(value)) {
+      isValid = false;
+      errorMessage = "Inserisci un'email valida";
+    }
+
+    if (!isValid) {
+      formGroup.classList.add('error');
+      formGroup.classList.remove('success');
+      const errorSpan = formGroup.querySelector('.form-error-message');
+      if (errorSpan) errorSpan.textContent = errorMessage;
+    } else {
+      formGroup.classList.remove('error');
+      formGroup.classList.add('success');
+    }
+
+    return isValid;
+  }
+
+  // Real-time validation
+  formGroups.forEach(group => {
+    const field = group.querySelector('input, select, textarea');
+    if (field) {
+      field.addEventListener('blur', () => validateField(field));
+      field.addEventListener('input', () => {
+        if (group.classList.contains('error')) {
+          validateField(field);
+        }
+      });
+    }
+  });
+
+  // Form submission
+  contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const name = formData.get('name');
-    alert(`Grazie ${name}! Riceveremo il tuo messaggio e ti contatteremo presto.`);
-    e.target.reset();
+
+    // Validate all fields
+    let isFormValid = true;
+    const fields = contactForm.querySelectorAll('input[required], select[required], textarea[required]');
+
+    fields.forEach(field => {
+      if (!validateField(field)) {
+        isFormValid = false;
+      }
+    });
+
+    if (isFormValid) {
+      // Show loading state
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Invio in corso...';
+
+      // Simulate API call
+      setTimeout(() => {
+        const formData = new FormData(contactForm);
+        const name = formData.get('name');
+
+        // Show success
+        submitBtn.textContent = '✓ Messaggio inviato!';
+        submitBtn.classList.add('success');
+
+        // Reset after 2 seconds
+        setTimeout(() => {
+          contactForm.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('success');
+          formGroups.forEach(group => {
+            group.classList.remove('error', 'success');
+          });
+          alert(`Grazie ${name}! Ti contatteremo presto.`);
+        }, 2000);
+      }, 1500);
+    }
   });
 
   // Smooth scroll for nav links

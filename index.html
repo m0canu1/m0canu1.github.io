@@ -292,16 +292,22 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Nome</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" placeholder="Il tuo nome" required>
+                <span class="form-error-message">Il nome è obbligatorio</span>
+                <span class="form-success-checkmark">✓</span>
               </div>
               <div class="form-group">
                 <label for="surname">Cognome</label>
-                <input type="text" id="surname" name="surname" required>
+                <input type="text" id="surname" name="surname" placeholder="Il tuo cognome" required>
+                <span class="form-error-message">Il cognome è obbligatorio</span>
+                <span class="form-success-checkmark">✓</span>
               </div>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
+              <input type="email" id="email" name="email" placeholder="esempio@email.com" required>
+              <span class="form-error-message">Inserisci un'email valida</span>
+              <span class="form-success-checkmark">✓</span>
             </div>
             <div class="form-group">
               <label for="service">Servizio Interessato</label>
@@ -313,10 +319,14 @@
                 <option value="iscrizione">Iscrizione</option>
                 <option value="altro">Altro</option>
               </select>
+              <span class="form-error-message">Seleziona un servizio</span>
+              <span class="form-success-checkmark">✓</span>
             </div>
             <div class="form-group full">
               <label for="message">Messaggio</label>
-              <textarea id="message" name="message" required></textarea>
+              <textarea id="message" name="message" placeholder="Raccontaci di te e dei tuoi obiettivi..." required></textarea>
+              <span class="form-error-message">Il messaggio è obbligatorio</span>
+              <span class="form-success-checkmark">✓</span>
             </div>
             <button type="submit" class="btn btn-primary">Invia Messaggio</button>
           </form>
