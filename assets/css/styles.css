@@ -138,11 +138,22 @@ nav {
   color: var(--red);
 }
 
-.hero-subtitle {
-  font-size: 1.3rem;
+.hero-label {
+  font-size: 0.75rem;
   color: var(--orange);
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--text);
   margin-bottom: 40px;
-  font-weight: 600;
+  font-weight: 400;
+  max-width: 700px;
+  line-height: 1.6;
 }
 
 .hero-buttons {
