@@ -1,3 +1,11 @@
+// ━━━━━━━━━━ SCROLL PROGRESS INDICATOR ━━━━━━━━━━
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  document.documentElement.style.setProperty('--scroll-percent', scrollPercent + '%');
+});
+
 // ━━━━━━━━━━ FOUNDER DATA ━━━━━━━━━━
 const foundersData = {
   luca: {
@@ -131,8 +139,48 @@ const modal = {
   }
 };
 
+// ━━━━━━━━━━ HAMBURGER MENU ━━━━━━━━━━
+function setupMobileMenu() {
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  if (!menuToggle || !navMenu) return;
+
+  // Toggle menu
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+
+  // Close menu on link click
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    });
+  });
+
+  // Close menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    }
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    }
+  });
+}
+
 // ━━━━━━━━━━ EVENT LISTENERS ━━━━━━━━━━
 document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu
+  setupMobileMenu();
   // Founder cards
   document.querySelectorAll('.founder-card').forEach(card => {
     card.addEventListener('click', () => {
