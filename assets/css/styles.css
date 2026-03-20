@@ -291,8 +291,17 @@ nav {
 }
 
 @media (max-width: 900px) {
+  #chisiamo {
+    padding: 80px 20px;
+  }
   .chisiamo-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #chisiamo {
+    padding: 60px 16px;
   }
 }
 
