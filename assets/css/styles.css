@@ -871,6 +871,10 @@ nav::after {
   }
 }
 
+.info-section {
+  min-width: 0;
+}
+
 .info-section h3 {
   font-size: 1.4rem;
   font-weight: 700;
@@ -941,8 +945,8 @@ nav::after {
 .maps-container {
   border-radius: var(--radius);
   overflow: hidden;
+  width: 100%;
   height: 250px;
-  aspect-ratio: 16/9;
   margin-top: 20px;
 }
 
