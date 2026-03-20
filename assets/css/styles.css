@@ -779,31 +779,17 @@ nav::after {
   width: 100%;
 }
 
-/* Luca - primary color gradient */
-.founder-card.luca {
-  background: linear-gradient(135deg, rgba(229, 39, 59, 0.15), rgba(229, 39, 59, 0.05));
-}
-
-.founder-card.luca .founder-card-bar {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-}
-
-/* Giacomo - complementary blue gradient */
-.founder-card.giacomo {
-  background: linear-gradient(135deg, #0a1a3a, #1a2a5a);
-}
-
-.founder-card.giacomo .founder-card-bar {
-  background: linear-gradient(90deg, #0052A3, #00A9CE);
-}
-
-/* Lorenzo - accent color gradient */
+/* Founder cards - uniform brand styling */
+.founder-card.luca,
+.founder-card.giacomo,
 .founder-card.lorenzo {
-  background: linear-gradient(135deg, rgba(0, 169, 206, 0.1), rgba(0, 169, 206, 0.05));
+  background: var(--card);
 }
 
+.founder-card.luca .founder-card-bar,
+.founder-card.giacomo .founder-card-bar,
 .founder-card.lorenzo .founder-card-bar {
-  background: linear-gradient(90deg, var(--accent), #0088AA);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
 }
 
 .founder-placeholder {

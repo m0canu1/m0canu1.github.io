@@ -390,12 +390,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Compute founder gradients
-  const lucaCard = document.querySelector('.founder-card.luca');
-  const giacomoCard = document.querySelector('.founder-card.giacomo');
-  const lorenzoCard = document.querySelector('.founder-card.lorenzo');
-
-  if (lucaCard) lucaCard.style.background = 'linear-gradient(135deg, #0d1f4a, #1a3a7a)';
-  if (giacomoCard) giacomoCard.style.background = 'linear-gradient(135deg, #0a1a3a, #1a2a5a)';
-  if (lorenzoCard) lorenzoCard.style.background = 'linear-gradient(135deg, #0d3a1f, #1a5a38)';
+  // Founder cards use uniform CSS styling - no inline styles needed
 });
