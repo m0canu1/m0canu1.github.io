@@ -1191,6 +1191,26 @@ footer {
   color: var(--red);
 }
 
+/* ━━━━━━━━━━ ACCESSIBILITY ━━━━━━━━━━ */
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.btn:focus-visible,
+.contact-form button:focus-visible,
+.nav-links .contact-btn:focus-visible,
+.founder-card:focus-visible {
+  border-radius: var(--radius);
+}
+
+.social-btn:focus-visible,
+.whatsapp-btn:focus-visible,
+.drawer-close:focus-visible {
+  border-radius: 50%;
+}
+
 /* ━━━━━━━━━━ SCROLLBAR ━━━━━━━━━━ */
 ::-webkit-scrollbar {
   width: 8px;
